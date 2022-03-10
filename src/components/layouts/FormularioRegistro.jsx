@@ -15,9 +15,12 @@ const FormularioRegistro = () => {
             "password":password,
             "name":name
         }).then((respuesta) => {
+            console.log(respuesta)
             if(respuesta.data.Message === "Usuario con ese username ya esta registrado"){
+                console.log(respuesta.data.Message)
                 setRuta(false)
             }else{
+                console.log("Registro realizado correctamente")
                 setRuta(true)
             }
         }).catch((error) => {
