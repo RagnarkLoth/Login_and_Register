@@ -1,29 +1,27 @@
 import React, {useState, useEffect} from "react";
 import Cartas from "../ui/Cartas";
 import axios from 'axios';
-
-
-
+import jwtDecode from "jwt-decode"; 
 
 const Listado = () => {
-    /*
+    
     const[datosApi, setDatosApi] = useState([])
 
+    const token = localStorage.getItem('token')
+    const infoToken = jwtDecode(token)
+
     useState(() => {
-        axios.get("https://backend-edw.herokuapp.com/usuarios").then(respuesta =>{
+        axios.get("https://backend-edw.herokuapp.com/usuario/"+infoToken.id).then(respuesta =>{
             setDatosApi(respuesta.data)
         }).catch((error) => {
             console.log(error)
         })
     }, [setDatosApi])
-    */
+    
     return(
-        /*
-        datosApi.map(datoApi => (
-            <Cartas nombre={datoApi[1]} usuario={datoApi[2]} key={datoApi[0]}/>
-        ))
-        */
-       <h1>Hola</h1>
+        <>
+            <Cartas nombre={datosApi[1]} usuario={datosApi[2]}/>     
+        </>
 
     )
 

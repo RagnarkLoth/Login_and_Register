@@ -6,10 +6,13 @@ const Cartas = ({nombre, usuario}) => {
 
         <div className="carta">
             <div className="texto">
+                <h1>Nombre:</h1>
                 <p>{nombre}</p>
-                <p>{usuario}</p>
             </div>
-            <img src="" alt="imagenPrueba" />
+            <div className="texto">
+                <h1>Usuario:</h1>
+                <p>{usuario}</p>    
+            </div>
         </div>
 
     )

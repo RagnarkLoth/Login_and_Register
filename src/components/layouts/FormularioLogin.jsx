@@ -1,23 +1,30 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+
 const FormularioLogin = () => {
 
-    const[ruta, setRuta] = useState(true)
+    useEffect(() => {
+        localStorage.clear()
+    },[])
 
     const post = () => {
         axios.post('https://backend-edw.herokuapp.com/login',{
             "username": document.getElementById("usuario").value,
             "password": document.getElementById("password").value
         }).then((respuesta) => {
-            console.log(respuesta)
-            if(respuesta.data.length > 20){
-                console.log("Logueo exitoso")
-                setRuta(false)
+            let token = respuesta.data
+            let validacion = false
+            console.log(token)
+            if(token.length > 50){
+                localStorage.setItem('token', token)
+                validacion = true
+            }  
+            if(validacion){
+                window.location = "/inicio"
             }else{
                 console.log("error")
-                setRuta(true)
             }
         }).catch((error) => {
             console.log(error)
@@ -49,7 +56,7 @@ const FormularioLogin = () => {
                         <input type="password" className="password" id="password"/>
                     </div>
                     <div className="botones">
-                        {ruta ? <NavLink to="/"><button className="botonIniciar" onClick={post}>iniciar</button></NavLink> : <NavLink to={"/inicio"}><button className="botonIniciar" onClick={post}>iniciar</button></NavLink>}
+                        <NavLink to="/"><button className="botonIniciar" onClick={post}>iniciar</button></NavLink>
                         <NavLink to="/registro">Registrarse</NavLink>
                     </div>
                 </form>

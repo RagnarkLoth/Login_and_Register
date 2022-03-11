@@ -8,18 +8,21 @@ import Listado from "../layouts/Listado";
 const Inicio = () => {
 
     return(
-            <>
-            <BarraNavegacion/>
-            <Routes>
-                <Route path="" element={
-                    <Listado/>
-                }/>
-                <Route path="/buscar" element={
-                    <Listado/>
-                }/>
-            </Routes>
-            
-            </>            
+        <>
+            <header>
+                <BarraNavegacion/>
+            </header>
+            <div className="listados">
+                <Routes>
+                    <Route path="" element={
+                        <Listado/>
+                    }/>
+                    <Route path="/buscar" element={
+                        <Listado/>
+                    }/>
+                </Routes>
+            </div>
+        </>            
     )
 
 

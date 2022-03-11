@@ -9,7 +9,6 @@ const BarraNavegacion = () => {
 
             <ul>
                 <NavLink to=""><li>INICIO</li></NavLink>
-                <NavLink to="buscar"><li>BUSCAR USUARIO</li></NavLink>
                 <NavLink to="/"><li>SALIR</li></NavLink>
             </ul>
 

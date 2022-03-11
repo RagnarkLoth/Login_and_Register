@@ -4,8 +4,6 @@ import axios from "axios";
 
 const FormularioRegistro = () => {
 
-    const[ruta, setRuta] = useState(false)
-
     const post = () => {
         let username = document.getElementById("inputUsuario").value
         let password = document.getElementById("inputPassword").value
@@ -18,14 +16,12 @@ const FormularioRegistro = () => {
             console.log(respuesta)
             if(respuesta.data.Message === "Usuario con ese username ya esta registrado"){
                 console.log(respuesta.data.Message)
-                setRuta(false)
             }else{
                 console.log("Registro realizado correctamente")
-                setRuta(true)
+                window.location = "/"
             }
         }).catch((error) => {
             console.log(error)
-            setRuta(false)
         })
     }
 
@@ -47,7 +43,7 @@ const FormularioRegistro = () => {
                         <input type="password" id="inputPassword"/>
                     </div>
                     <div className="botones">
-                        { ruta ? <NavLink to="/inicio" onClick={post}><button>Iniciar</button></NavLink> : <NavLink to="/registro" onClick={post}><button>Iniciar</button></NavLink>}
+                        <NavLink to="/registro" onClick={post}><button>Iniciar</button></NavLink>
                         <NavLink to="/"><button>Cancelar</button></NavLink>
                     </div>
                 </form>
